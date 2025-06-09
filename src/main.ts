@@ -3,6 +3,11 @@ import { AppModule } from './app.module';
 import dotenv from 'dotenv';
 import * as path from 'path';
 import { SuccessInterceptor } from './common/interceptors/succeess.interceptor';
+import { webcrypto } from 'crypto';
+
+if (!globalThis.crypto) {
+  globalThis.crypto = webcrypto as Crypto;
+}
 
 dotenv.config({ path: path.join(process.cwd(), '.env') });
 
